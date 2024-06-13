@@ -1,19 +1,19 @@
-const dbConnect = require('./mongodb');
+const dbConnect = require('./mongodb')
 
-const insertData=async ()=>{
-   let data = await dbConnect();
-  let result = await data.insert(
-      [
-          {name:'max 5',brand:'micromax',price:420,category:'mobile'},
-          {name:'max 6',brand:'micromax',price:520,category:'mobile'},
-          {name:'max 7',brand:'micromax',price:620,category:'mobile'},
-
-      ]
-  )
-  if(result.acknowledged)
-  {
-      console.warn("data is inserted")
-  }
+const insert = async () => {
+    let db =  await dbConnect();
+    let result = await db.insertMany(
+        [
+            {name:'moksha', rollno:'22BCP366', number:9087564734},
+            {name:'devam', rollno:'22BCP319', number:9087764734},
+            {name:'esha', rollno:'22BCP410', number:908004734},
+        ]
+    )
+    if(result.acknowledged){
+        console.log("Inserted successfully")
+    }
+    else{
+        console.log("Not inserted")
+    }
 }
-
-insertData();
+insert()
